@@ -1,0 +1,42 @@
+﻿@model DevToolsTrainer.Models.SubjectsViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Select the @Model.Subject topic you want to train</h1>
+
+
+        <ul style="list-style:none;">
+            @for(int i = 0; i < @Model.Topics.Length; i++) {
+            <li>
+                <label for="@Model.Topics[i]">
+                    <input class="topics" name="@Model.Topics[i]" value="@Model.Topics[i]" type="checkbox">
+                    @Model.Topics[i] 
+                </label>
+            </li>
+            }
+        </ul>
+        <form id="trainingform" action="/training/trainer" method="get">
+            <input type="button" value="START" onclick="start()"></input>
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+    function start() {
+
+        let startpath = "/training/trainer/" + "@Model.Subject" + "/?topics="
+
+        let newpath = [...document.getElementsByClassName("topics")]
+            .filter((e) => e.checked)
+            .map(e => e.value)
+            .reduce((s, e) => s + e + encodeURIComponent(","), startpath)
+
+        window.location.href = window.location.protocol + "//" + window.location.host + newpath
+    }
+
+</script>

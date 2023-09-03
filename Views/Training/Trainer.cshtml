@@ -1,0 +1,97 @@
+﻿@model DevToolsTrainer.Models.TrainerViewModel
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>@Model.Subject trainer</title>
+  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+</head>
+<body onload="initiatePage()">
+	
+	<div id="top">
+	<h1>@Model.Subject trainer</h1>
+	
+	<p><strong>Question</strong></p>
+	<blockquote >
+	<p id="questionbox"></p>
+	</blockquote>
+
+	<hr>
+	<p><strong>Answer</strong></p>
+	<input id="answerbox" onkeypress="answerEnter(event)" placeholder="Input answer" style="width: 100%;"></input>
+	<div style="display:flex; justify-content: space-between;">
+		<p id="feedback" style="text-align: center;"></p>	
+		<input id="answerbutton" type="reset" value="answer" style="text-align: center;" onclick="answer()"></input></div>
+	</div>
+
+	
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="/js/he.js"></script>
+  <script>
+
+	let correctAnswer;
+	let questions = []
+	let attempts = 4
+	let reviewState = false
+
+	function answerEnter(e){
+		if(e.key === "Enter") {
+			if (attempts) {
+				answer();
+			} else if (reviewState) {
+				reviewState = false
+				attempts = 4
+				document.getElementById("feedback").innerText = ""
+				updatePage()
+			} else {
+				review()
+			}
+			
+		}
+	}
+
+	function answer() {
+		let userAnswer = document.getElementById("answerbox").value
+		let feedback = document.getElementById("feedback")
+		let blockquote = document.getElementsByTagName("blockquote")[0]
+
+		if (userAnswer == correctAnswer) {
+			updatePage()
+			blockquote.setAttribute("style", "background-color: #abebc6 ")
+			feedback.innerText = "Correct!"
+			feedback.setAttribute("style", "color: #1e8449 ")
+			attempts = 4
+		} else {
+			attempts = attempts - 1
+			blockquote.setAttribute("style", "background-color: #fadbd8 ")
+			feedback.innerText = "Wrong..." + attempts
+			feedback.setAttribute("style", "color: #c62d2d")
+		}
+		document.getElementById("answerbox").value = ""
+	}
+
+	function review() {
+		document.getElementById("feedback").innerText = correctAnswer
+		reviewState = true
+	}
+
+	function generateQuestion(){
+		return questions[Math.floor(Math.random() * questions.length)]
+	}
+
+	function initiatePage(){
+		let questionanswers = "@Model.Questions"
+		questions = JSON.parse(he.decode(questionanswers))
+		updatePage()
+	}
+
+	function updatePage(){
+		let newQA = generateQuestion()
+		let newQuestion = Object.keys(newQA)[0]
+		correctAnswer = Object.values(newQA)[0]
+		document.getElementById("questionbox").innerText = newQuestion
+	}
+
+  </script>
+</body>
+</html>
