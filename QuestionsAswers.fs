@@ -59,7 +59,7 @@ module QuestionAnswers =
 	{\"Upload current repo to remote at https://github.com/Developer/projectname and name it origin\": \"git remote add origin https://github.com/Developer/projectname\"},
 	{\"Download project from existing remote repository https://github.com/Developer/projectname to current folder\": \"git clone https://github.com/Developer/projectname\"}
     ]"
-    let getinfo: string= "[
+    let gitinfo: string= "[
 	{\"Show changes to files not yet staged\": \"git diff\"},
 	{\"Show changes to staged files\": \"git diff --cached\"},
 	{\"Show changes to staged and unstaged files\": \"git diff HEAD\"},
