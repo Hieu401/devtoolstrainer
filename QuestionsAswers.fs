@@ -56,7 +56,7 @@ module QuestionAnswers =
 
     let createrepo: string = "[
 	{\"Initialize a new repo in current project\": \"git init\"},
-	{\"Connect current repo to remote at https://github.com/Developer/projectname and name it origin\": \"git remote origin https://github.com/Developer/projectname\"},
+	{\"Upload current repo to remote at https://github.com/Developer/projectname and name it origin\": \"git remote add origin https://github.com/Developer/projectname\"},
 	{\"Download project from existing remote repository https://github.com/Developer/projectname to current folder\": \"git clone https://github.com/Developer/projectname\"}
     ]"
     let getinfo: string= "[
@@ -88,5 +88,6 @@ module QuestionAnswers =
 	{\"Update local repo with all the latest changes from remote repository\":\"git fetch\"},
 	{\"Get all changes from remote and merge in local\":\"git pull\"},
 	{\"Get all changes from remote and rebase in local\":\"git pull --rebase\"},
-	{\"Update remote repos with local repos\":\"git push\"}
+	{\"Update remote repos with local repos\":\"git push\"},
+	{\"Connect and update current branch to remote repos origin, branch master\":\"git push --set-upstream origin master\"}
     ]" 
