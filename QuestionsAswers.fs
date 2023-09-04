@@ -51,8 +51,12 @@ module QuestionAnswers =
 
     let storage: string = "[]"
 
-    let dockercompose: string = "[]"
+    let dockerCompose: string = "[]"
     let swarm: string = "[]"
+
+    let dockerComposeYaml: string = "[]"
+    
+    let dockerFile: string = "[]"
 
     let createrepo: string = "[
 	{\"Initialize a new repo in current project\": \"git init\"},
