@@ -24,6 +24,8 @@ module QuestionAnswersService =
         | "images" -> Some images
         | "networking" -> Some networking
         | "docker compose" -> Some dockerCompose
+        | "docker compose yaml" -> Some dockerComposeYaml
+        | "docker file" -> Some dockerFile
         | "swarm" -> Some swarm
         | "storage" -> Some storage
         | "create repository" -> Some createrepo

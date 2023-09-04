@@ -56,7 +56,24 @@ module QuestionAnswers =
 
     let dockerComposeYaml: string = "[]"
     
-    let dockerFile: string = "[]"
+    let dockerFile: string = "[
+	{\"Which instruction is used to set a base image to build on top from?\": \"FROM\"},
+	{\"Which instruction is used to run a command as a layer for the new image?\": \"RUN\"},
+	{\"Which instruction is used to run a command with changeable arguments when the container is started?\": \"CMD\"},
+	{\"Which instruction is used to add metadata to the containers of the image?\": \"LABEL\"},
+	{\"Which instruction is used to have the containers of the image listen to certain ports by default?\": \"EXPOSE\"},
+	{\"Which instruction is used to add environment variables to the containers of the image?\": \"ENV\"},
+	{\"Which advanced instruction is used to add files to the filesystem of the containers?\": \"ADD\"},
+	{\"Which basic instruction is used to add files to the filesystem of the containers?\": \"COPY\"},
+	{\"Which instruction is used to run a command with unchangeable arguments when the container is started?\": \"ENTRYPOINT\"},
+	{\"Which instruction is used to create a mount point for volumes on the Docker of the host?\": \"VOLUME\"},
+	{\"Which instruction is used to set the standard username when running CMD, RUN and ENTRYPOINT instructions?\": \"USER\"},
+	{\"Which instruction is used to set the woking directory for the RUN, CMD, ENTRYPOINT, ADD and COPY instructions?\": \"WORKDIR\"},
+	{\"Which instruction is used to add instructions when this image is used as base image for another image?\": \"ONBUILD\"},
+	{\"Which instruction is used to set the default stopsignal used to stop the containers of this image?\": \"STOPSIGNAL\"},
+	{\"Which instruction is used to set the exact method used to check the health status of the docker containers?\": \"HEALTHCHECK\"},
+	{\"Which instruction is used to set the default shell used in the containers of this image when running shell commands?\": \"SHELL\"},
+    ]"
 
     let createrepo: string = "[
 	{\"Initialize a new repo in current project\": \"git init\"},
