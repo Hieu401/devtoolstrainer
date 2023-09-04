@@ -19,7 +19,7 @@ module QuestionAnswersService =
 
     let getSubjectQA: string -> Option<string> = fun (subject: string) ->
         match subject with
-        | "container info" -> Some containerinfo
+        | "container info" -> Some containerInfo
         | "containers" -> Some containers
         | "images" -> Some images
         | "networking" -> Some networking
@@ -27,7 +27,7 @@ module QuestionAnswersService =
         | "swarm" -> Some swarm
         | "storage" -> Some storage
         | "create repository" -> Some createrepo
-        | "git info" -> Some gitinfo
+        | "git info" -> Some gitInfo
         | "branch" -> Some branch
         | "commit" -> Some commit
         | "remote" -> Some remote

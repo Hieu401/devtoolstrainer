@@ -2,7 +2,7 @@ namespace DevToolsTrainer
 
 module QuestionAnswers =
 
-    let containerinfo: string = "[
+    let containerInfo: string = "[
 	{\"Get port mapping from container qwer1234\": \"docker port qwer1234\"},
 	{\"List logs from container qwer1234\": \"docker logs qwer1234\"},
 	{\"List real time events from container qwer1234\": \"docker events qwer1234\"},
@@ -63,7 +63,7 @@ module QuestionAnswers =
 	{\"Upload current repo to remote at https://github.com/Developer/projectname and name it origin\": \"git remote add origin https://github.com/Developer/projectname\"},
 	{\"Download project from existing remote repository https://github.com/Developer/projectname to current folder\": \"git clone https://github.com/Developer/projectname\"}
     ]"
-    let gitinfo: string= "[
+    let gitInfo: string= "[
 	{\"Show changes to files not yet staged\": \"git diff\"},
 	{\"Show changes to staged files\": \"git diff --cached\"},
 	{\"Show changes to staged and unstaged files\": \"git diff HEAD\"},
