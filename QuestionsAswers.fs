@@ -34,7 +34,7 @@ module QuestionAnswers =
     let imageRepository: string = "[
 	{\"Login your docker hub\": \"docker login\"},
 	{\"Pull image testapi:v1 from registry\": \"docker image pull testapi:v1\"},
-	{\"Push image testapi:v1 to registry\": \"docker image push testapi:v1\"}
+	{\"Push image testapi:v1 to registry of awesomeusername\": \"docker image push awesomeusername/testapi:v1\"}
     ]"
 
     let imageInfo: string = "[
