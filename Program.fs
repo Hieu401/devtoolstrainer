@@ -5,6 +5,7 @@ namespace DevToolsTrainer
 
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.AspNetCore.HttpOverrides;
 open Microsoft.Extensions.Hosting
 
 module Program =
@@ -23,12 +24,19 @@ module Program =
             .AddRazorRuntimeCompilation()
 
         builder.Services.AddRazorPages()
+        builder.Services.Configure<ForwardedHeadersOptions>(
+            fun (options: ForwardedHeadersOptions) -> 
+                options.ForwardedHeaders <- ForwardedHeaders.XForwardedFor ||| ForwardedHeaders.XForwardedProto
+        )
 
         let app = builder.Build()
 
         if not (builder.Environment.IsDevelopment()) then
+            app.UseForwardedHeaders()
             app.UseExceptionHandler("/Home/Error")
             app.UseHsts() |> ignore // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
+        app.UseForwardedHeaders()    
 
         app.UseHttpsRedirection()
 
