@@ -10,7 +10,7 @@ module QuestionAnswersService =
 
     let selectTopic: string -> Option<List<string>> = fun (selection: string) ->
         match selection with
-        | "docker" -> Some ["container info"; "containers"; "images"; "networking"; "storage"; "docker compose"; "docker compose yaml"; "docker file"; "swarm"]
+        | "docker" -> Some ["docker file"; "image build"; "image repository"; "image info"; "container info"; "containers"; "networking"; "storage"; "docker compose"; "docker compose yaml";  "swarm"]
         | "git" -> Some ["create repository"; "git info"; "branch"; "commit"; "remote"]
         | "bash" -> None
         | "powershell" -> None
@@ -21,7 +21,9 @@ module QuestionAnswersService =
         match subject with
         | "container info" -> Some containerInfo
         | "containers" -> Some containers
-        | "images" -> Some images
+        | "image build" -> Some imageBuild
+        | "image repository" -> Some imageRepository
+        | "image info" -> Some imageInfo
         | "networking" -> Some networking
         | "docker compose" -> Some dockerCompose
         | "docker compose yaml" -> Some dockerComposeYaml
