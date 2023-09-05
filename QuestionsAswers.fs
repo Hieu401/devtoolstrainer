@@ -18,17 +18,17 @@ module QuestionAnswers =
 	{\"Which instruction is used to add instructions when this image is used as base image for another image?\": \"ONBUILD\"},
 	{\"Which instruction is used to set the default stopsignal used to stop the containers of this image?\": \"STOPSIGNAL\"},
 	{\"Which instruction is used to set the exact method used to check the health status of the docker containers?\": \"HEALTHCHECK\"},
-	{\"Which instruction is used to set the default shell used in the containers of this image when running shell commands?\": \"SHELL\"},
+	{\"Which instruction is used to set the default shell used in the containers of this image when running shell commands?\": \"SHELL\"}
     ]"
 
     let imageBuild: string = "[
-	{\"Get all locally stored images\": \"docker images ls\"},
+	{\"Get all locally stored images\": \"docker image ls\"},
 	{\"Build an imagine using a docker file in the current folder\": \"docker build .\"},
-	{\"Build and tag an imagine using a docker file in the current folder as test:dev\": \"docker build -t test:dev . \"},
+	{\"Build and tag an imagine using a docker file in the current folder as test:dev\": \"docker build -t test:dev .\"},
 	{\"Build an imagine using a docker file in your repository https://github.com/user/reponame\": \"docker build https://github.com/user/reponame\"},
 	{\"Create an image from container qwer1234 and name it testapi\": \"docker commit qwer1234 testapi\"},
 	{\"Remove image testapi:v1\": \"docker rmi testapi:v1\"},
-	{\"Tag an existing image testapi:v1 to create a new unique image\": \"docker image tag testapi:v1 testapi:v2\"}
+	{\"Tag an existing image testapi:v1 to create a new unique image testapi:v2\": \"docker image tag testapi:v1 testapi:v2\"}
     ]"
 
     let imageRepository: string = "[
@@ -38,7 +38,7 @@ module QuestionAnswers =
     ]"
 
     let imageInfo: string = "[
-	{\"Show history of image testapi:v1\": \"docker history testapi:v1\"},
+	{\"Show history of image testapi:v1\": \"docker history testapi:v1\"}
     ]"
 
     let containers: string = "[
