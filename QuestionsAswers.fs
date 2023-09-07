@@ -54,7 +54,10 @@ module QuestionAnswers =
 	{\"Run docker from image testapi:v1\": \"docker run testapi:v1\"},
 	{\"Run container from image testapi:v1 and remove it after it stops\": \"docker run --rm testapi:v1\"},
 	{\"Run container from image testapi:v1 and run the ls command in it after start\": \"docker run -it testapi:v1 ls\"},
-	{\"Run container from image testapi:v1 and open its shell after start\": \"docker run -it testapi:v1 bash\"},
+	{\"Run container from image testapi:v1 and open its shell after start\": \"docker run -it testapi:v1 sh\"},
+	{\"Run container from image testapi:v1 in the background\": \"docker run -d testapi:v1\"},
+	{\"Run container from image testapi:v1 and name it helloworld\": \"docker run --name hellworld testapi:v1\"},
+	{\"Run container from image testapi:v1 and connect it to user-defined network \"mynetwork\"\": \"docker run --network=\"mynetwork\" testapi:v1\"},
 	{\"Remove the container qwer1234\": \"docker rm qwer1234\"},
 	{\"Update the configurations of container qwer1234\": \"docker update qwer1234\"},
 	{\"Rename container qwer1234 to 1234qwer\": \"docker rename qwer1234 1234qwer\"},
@@ -64,7 +67,7 @@ module QuestionAnswers =
     let containerInfo: string = "[
 	{\"Get port mapping from container qwer1234\": \"docker port qwer1234\"},
 	{\"List logs from container qwer1234\": \"docker logs qwer1234\"},
-	{\"List real time events from container qwer1234\": \"docker events qwer1234\"},
+	{\"List real time events from your docker\": \"docker events\"},
 	{\"List running processes in container qwer1234\": \"docker top qwer1234\"},
 	{\"List resource usage of container qwer1234\": \"docker stats qwer1234\"},
         {\"Show changes to file system of container qwer1234\": \"docker diff qwer1234\"}
@@ -75,7 +78,8 @@ module QuestionAnswers =
 	{\"Remove network testnetwork\": \"docker network rm testnetwork\"},
 	{\"Show info of network testnetwork\": \"docker network inspect testnetwork\"},
 	{\"Connect container qwer1234 to network testnetwork\": \"docker network connect testnetwork qwer1234\"},
-	{\"Disconnect container qwer1234 from network testnetwork\": \"docker network diconnect testnetwork qwer1234\"}
+	{\"Disconnect container qwer1234 from network testnetwork\": \"docker network diconnect testnetwork qwer1234\"},
+	{\"Create a new network named my_network\": \"docker network create my_network\"}
     ]"
 
     let storage: string = "[]"
