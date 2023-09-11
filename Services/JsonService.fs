@@ -15,6 +15,7 @@ module QuestionAnswersService =
         | "bash" -> None
         | "powershell" -> None
         | "vim" -> None
+        | "nginx" -> Some ["nginx directives"; "nginx commands"]
         | _ -> None
 
     let getSubjectQA: string -> Option<string> = fun (subject: string) ->
@@ -35,6 +36,8 @@ module QuestionAnswersService =
         | "branch" -> Some branch
         | "commit" -> Some commit
         | "remote" -> Some remote
+        | "nginx basic directives" -> Some nginxBasicDirectives
+        | "nginx commands" -> Some nginxCommands
         | _ -> None
 
     let getSubjectQAs: List<string> -> List<Option<string>> =

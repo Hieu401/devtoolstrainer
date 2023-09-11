@@ -82,11 +82,43 @@ module QuestionAnswers =
 	{\"Create a new network named my_network\": \"docker network create my_network\"}
     ]"
 
-    let storage: string = "[]"
+    let storage: string = "[
+	{\"Create a new volume called db_storage\": \"docker volume create db_storage\"},
+	{\"View all volumes\": \"docker volume ls\"},
+	{\"View the details of volume db_storage\": \"docker volume inspect db_storage\"},
+	{\"Remove the volume db_storage\": \"docker volume rm db_storage\"},
+	{\"Where is the volume db_storage stored on Linux by default?\": \"var/lib/docker/volumes/db_storage\"}
+    ]"
 
-    let dockerComposeYaml: string = "[]"
+    let dockerComposeYaml: string = "[
+	{\"Define a service api1 whos image which should be named iapi1 is build using the dockerfile in current directory\": \"services: api1: build: . image: iapi1\"},
+	{\"Define a service api1 which is build from image iapi1\": \"services: api1: image: iapi1\"},
+	{\"Define a service api1 whos container name will be api1\": \"services: api1: container_name: api1\"},
+	{\"Define a service api1 with a volume at host location /var/lib/docker/volumes/api1_volume to /var/lib/mysql\": \"services: api1: volumes: - /var/lib/docker/volumes/api1_volume:/var/lib/mysql\"},
+	{\"Define a service api1 and overwrite the start command of that container with \'nginx\'\": \"services: api1: command: nginx\"},
+	{\"Define a service api1 whos environment variable db_port should be 4321 and db_host should be localhost\": \"services: api1: environment: - db_port: 4321 - do_host: localhost\"},
+	{\"Define a service api1 whos environment variables can be retrieved at ./.env\": \"services: api1: env_file: ./.env\"},
+	{\"Define a service api1 that tries to restart up to 3 time upon failure\": \"services: api1: restart: on-failure:3\"},
+	{\"Define a service api1 that is connected to networks network1 and network2\": \"services: api1: networks: - network1 - network2\"},
+	{\"Define a service api1 whos port 80 is expose to host port 8080\": \"services: api1: ports: \'8080:80\'\"},
+	{\"Define a service api1 that depends on containers db and nginx to be up in order to start\": \"services: api1: depends_on: - db - nginx\"},
+	{\"Define a bridge network network1\": \"networks: network1: driver: bridge\"},
+	{\"Define an existing network network1\": \"networks: network1: external: true\"},
+	{\"Define a named volume called postgres-data to be used in services\": \"volumes: postgres-data:\"}
+    ]"
 
-    let dockerCompose: string = "[]"
+    let dockerCompose: string = "[
+	{\"Build the images and start the containers for the services\": \"docker-compose up\"},
+	{\"Stop the service containers and remove them\": \"docker-compose down\"},
+	{\"Stop the services\": \"docker-compose stop\"},
+	{\"Start the services\": \"docker-compose start\"},
+	{\"Build the images for the services\": \"docker-compose build\"},
+	{\"Create the containers for the services\": \"docker-compose create\"},
+	{\"Restart the containers of the services\": \"docker-compose restart\"},
+	{\"Pause the service processes\": \"docker-compose pause\"},
+	{\"Unpause the service processes\": \"docker-compose unpause\"},
+	{\"Build the images and start the containers for the services using the configuration file at ../docker-compose.yml\": \"docker-compose -f ../docker-compose.yml up\"}
+    ]"
     let swarm: string = "[]"
 
     let createrepo: string = "[
@@ -126,3 +158,41 @@ module QuestionAnswers =
 	{\"Update remote repos with local repos\":\"git push\"},
 	{\"Connect and update current branch to remote repos origin, branch master\":\"git push --set-upstream origin master\"}
     ]" 
+
+    let nginxBasicDirectives: string = "[
+	{\"\": \"\"},
+	{\"\": \"\"},
+	{\"\": \"\"},
+	{\"\": \"\"}
+    ]"
+
+    let nginxStaticFilesDirectives: string = "[
+	{\"\": \"\"},
+	{\"\": \"\"},
+	{\"\": \"\"},
+	{\"\": \"\"}
+    ]"
+
+    let nginxReverseProxyDirectives: string = "[
+	{\"\": \"\"}
+    ]"
+
+    let nginxSSLDirectives: string = "[
+	{\"\": \"\"}
+    ]"
+
+    let nginxLoggingDirectives: string = "[
+	{\"\": \"\"}
+    ]"
+
+    let nginxCommands: string = "[
+	{\"Start the nginx webserver\": \"nginx\"},
+	{\"Stop the nginx webserver\": \"nginx -s stop\"},
+	{\"Reload the nginx webserver\": \"nginx -s reload\"},
+	{\"Reopen log files\": \"nginx -s reopen\"},
+	{\"Stop nginx webserver gracefully\": \"nginx -s quit\"}
+    ]"
+
+    let nginxFastCGICacheDirextives: string = "[]"
+
+    let nginxMIMETypes: string = "[]"
