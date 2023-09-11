@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    image: am148889/devtoolstrainer:proxyv1
+    container_name: api
+    expose: 
+      - 80
+    networks:
+      - dtt_network
+  nginx:
+    image: am148889/devtoolstrainer:nginx
+    container_name: nginx
+    depends_on:
+      - api
+    command: ["sh", "-c", "sh /etc/nginx/setup_config.sh && nginx -g 'daemon off;'"]
+    ports:
+      - 8080:80
+    networks:
+      - dtt_network
+
+networks:
+  dtt_network:
+    driver: bridge
